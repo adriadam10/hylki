@@ -5,6 +5,7 @@
 use serde::{Deserialize, Serialize};
 use std::path::PathBuf;
 
+use super::hover_actions::default_hover_actions;
 use super::look::{
     default_list_columns, default_text_scale, AppTheme, ClockStyle, DateStyle, ListLayout,
     MessageTheme, ReadingPane, TrayIcon,
@@ -240,6 +241,15 @@ pub(crate) struct PrivacyFile {
     /// left to delete and right to archive, on reverses them.
     #[serde(default)]
     pub(crate) swipe_reversed: bool,
+    /// Whether a message row shows buttons under its text while the pointer
+    /// is on it. On for a new install; a file from before the key keeps the
+    /// rows as they were.
+    #[serde(default)]
+    pub(crate) hover_actions: bool,
+    /// Those buttons, in order, by name: names, not the enum, so a button a
+    /// later version adds does not make an older one throw the file away.
+    #[serde(default = "default_hover_actions")]
+    pub(crate) hover_action_buttons: Vec<String>,
     /// How far a trackpad's two-finger swipe has to travel before a row
     /// commits (higher = shorter swipe). Trackpads differ enough that one
     /// fixed figure suits nobody, hence the knob; mouse and touchscreen
@@ -470,6 +480,10 @@ pub(crate) struct PrivacyFile {
     /// one (#641). Off by default.
     #[serde(default)]
     pub(crate) reply_to_sender: bool,
+    /// A Duck Address relay (`brian_at_gmail.com_jane@duck.com`) shows the
+    /// address behind it (#708). Off by default.
+    #[serde(default)]
+    pub(crate) duck_addresses: bool,
     /// The search field and the bulk bar open under the list instead of
     /// above it (#496). Off by default.
     #[serde(default)]
@@ -766,6 +780,8 @@ impl Default for PrivacyFile {
             show_attachments: true,
             settings_open_accounts: false,
             swipe_enabled: true,
+            hover_actions: true,
+            hover_action_buttons: default_hover_actions(),
             swipe_reversed: false,
             swipe_sensitivity: default_swipe_sensitivity(),
             compose_inline: true,
@@ -820,6 +836,7 @@ impl Default for PrivacyFile {
             contacts_search_open: false,
             contact_names: false,
             reply_to_sender: false,
+            duck_addresses: false,
             list_search_bottom: false,
             list_bulk_bar_bottom: false,
             list_search_start: SearchStart::Everywhere,

@@ -1966,6 +1966,12 @@ msgstr "demain"
 msgid "Signature"
 msgstr "Signature"
 
+msgid "Read/Unread"
+msgstr "Lu/Non lu"
+
+msgid "Spam"
+msgstr "Spam"
+
 msgid "Replied"
 msgstr "Répondu"
 
@@ -2025,12 +2031,6 @@ msgstr "Nom (Z à A)"
 
 msgid "Full Path"
 msgstr "Chemin complet"
-
-msgid "Spam"
-msgstr "Spam"
-
-msgid "Read/Unread"
-msgstr "Lu/Non lu"
 
 msgid "Move To"
 msgstr "Déplacer vers"
@@ -4505,6 +4505,9 @@ msgstr "Normal"
 msgid "Low"
 msgstr "Basse"
 
+msgid "Sign with S/MIME"
+msgstr ""
+
 msgid "Show the message as it will be sent"
 msgstr "Afficher le message tel qu’il sera envoyé"
 
@@ -4522,6 +4525,9 @@ msgstr "Insérer avant le texte"
 
 msgid "Insert After the Text"
 msgstr "Insérer après le texte"
+
+msgid "Mail sent with OpenPGP is not signed with S/MIME."
+msgstr ""
 
 msgid "Show Original"
 msgstr "Afficher l’original"
@@ -4925,6 +4931,9 @@ msgstr ""
 
 msgid "Show the Reply-To sender"
 msgstr "Afficher l’expéditeur Répondre à"
+
+msgid "Show the address behind a Duck Address"
+msgstr ""
 
 msgid "Layout"
 msgstr "Disposition"
@@ -6557,6 +6566,24 @@ msgstr "La vérification s’est arrêtée de manière inattendue."
 msgid "It works: {server} answered."
 msgstr "Ça fonctionne : {server} a répondu."
 
+#, fuzzy
+msgid "Drop actions on the row · up to {n}"
+msgstr "Toujours affiché · jusqu’à {n}"
+
+#, fuzzy
+msgid "Drop actions here"
+msgstr "Déposez un bouton ici pour le masquer"
+
+#, fuzzy
+msgid "Drop an action here to hide it"
+msgstr "Déposez un bouton ici pour le masquer"
+
+msgid "Lunch on Friday?"
+msgstr ""
+
+msgid "Are you free at noon? There is a new place by the station."
+msgstr ""
+
 msgid "Messages already read"
 msgstr "Messages déjà lus"
 
@@ -7186,6 +7213,17 @@ msgstr ""
 "Augmentez-la si les balayages s’arrêtent trop tôt. Les glissements à la "
 "souris ne sont pas affectés."
 
+#, fuzzy
+msgid "Hover Actions"
+msgstr "Actions"
+
+#, fuzzy
+msgid "Show actions on hover"
+msgstr "Ouvrir la palette d’actions au survol"
+
+msgid "Restore Defaults"
+msgstr "Restaurer les paramètres par défaut"
+
 msgid "Columns"
 msgstr "Colonnes"
 
@@ -7202,9 +7240,6 @@ msgstr "Adapter les colonnes à la liste"
 
 msgid "Off, a narrow list scrolls sideways."
 msgstr "Désactivé, une liste étroite défile horizontalement."
-
-msgid "Restore Defaults"
-msgstr "Restaurer les paramètres par défaut"
 
 msgid "Hylki collects no telemetry and sends no analytics."
 msgstr ""
@@ -7952,6 +7987,22 @@ msgstr ""
 "vous ne disposez pas encore de clé OpenPGP pour {addr} ; générez-en une dans "
 "« Paramètres », « OpenPGP »"
 
+msgid ""
+"No S/MIME certificate for {address}. Import one with gpgsm, or turn off Sign "
+"with S/MIME in the Send menu."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has been revoked."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has expired."
+msgstr ""
+
+msgid ""
+"The S/MIME certificate for {address} is not trusted. Add its root "
+"certificate to gpgsm's trustlist.txt."
+msgstr ""
+
 msgid "Could not save template: {e}"
 msgstr "Impossible d’enregistrer le modèle : {e}"
 
@@ -8336,6 +8387,45 @@ msgstr ""
 "Exécutez toutes les règles sur le courrier déjà présent dans vos boîtes de "
 "réception"
 
+msgid "Keys are managed under OpenPGP in the sidebar."
+msgstr "Les clés se gèrent sous OpenPGP dans la barre latérale."
+
+msgid "Automatic uses the key whose address matches."
+msgstr "La fonction « Automatique » utilise la clé dont l’adresse correspond."
+
+msgid "Sign messages by default"
+msgstr "Signer les messages par défaut"
+
+msgid "Hide the subject of encrypted mail"
+msgstr "Masquer l’objet des e-mails chiffrés"
+
+msgid "Only the recipients see the subject. Others see \"...\"."
+msgstr "Seuls les destinataires voient l’objet. Les autres voient « ... »."
+
+msgid "Send your key with your mail"
+msgstr "Envoyer votre clé avec vos messages"
+
+msgid "Autocrypt. Keys others send this way are kept too."
+msgstr ""
+"Autocrypt. Les clés envoyées par d’autres de cette façon sont aussi "
+"conservées."
+
+msgid "Encrypt by default"
+msgstr "Chiffrer par défaut"
+
+msgid "Mail to people who ask for the same is encrypted."
+msgstr "Les messages aux personnes qui demandent la même chose sont chiffrés."
+
+msgid "S/MIME"
+msgstr ""
+
+msgid "Certificates are managed with gpgsm."
+msgstr ""
+
+#, fuzzy
+msgid "The Send menu turns it off for one message."
+msgstr "La clé de l’expéditeur a été importée à partir du message."
+
 msgid "GNOME Online Account"
 msgstr "Compte en ligne de GNOME"
 
@@ -8626,50 +8716,6 @@ msgstr ""
 
 msgid "No hidden folders."
 msgstr "Aucun dossier masqué."
-
-msgid "Keys are managed under OpenPGP in the sidebar."
-msgstr "Les clés se gèrent sous OpenPGP dans la barre latérale."
-
-msgid "Automatic uses the key whose address matches."
-msgstr "La fonction « Automatique » utilise la clé dont l’adresse correspond."
-
-msgid "Sign messages by default"
-msgstr "Signer les messages par défaut"
-
-msgid "Hide the subject of encrypted mail"
-msgstr "Masquer l’objet des e-mails chiffrés"
-
-msgid "Only the recipients see the subject. Others see \"...\"."
-msgstr "Seuls les destinataires voient l’objet. Les autres voient « ... »."
-
-msgid "Send your key with your mail"
-msgstr "Envoyer votre clé avec vos messages"
-
-msgid "Autocrypt. Keys others send this way are kept too."
-msgstr ""
-"Autocrypt. Les clés envoyées par d’autres de cette façon sont aussi "
-"conservées."
-
-msgid "Encrypt by default"
-msgstr "Chiffrer par défaut"
-
-msgid "Mail to people who ask for the same is encrypted."
-msgstr "Les messages aux personnes qui demandent la même chose sont chiffrés."
-
-msgid "S/MIME"
-msgstr ""
-
-msgid "Certificates are managed with gpgsm."
-msgstr ""
-
-#, fuzzy
-msgid "Sign every message"
-msgstr "Rechercher dans le message"
-
-msgid ""
-"With the certificate for the sender's address. Mail sent with OpenPGP is not "
-"signed twice."
-msgstr ""
 
 msgid "Your password is kept in the system keyring, never in plain text."
 msgstr ""
@@ -9365,9 +9411,6 @@ msgstr "Hyprlab"
 #~ "Apparaîtra dans le menu « De » de la fenêtre de rédaction. Les réponses "
 #~ "aux messages envoyés à cette adresse seront expédiées depuis celle-ci."
 
-#~ msgid "The sender's key was imported from the message."
-#~ msgstr "La clé de l’expéditeur a été importée à partir du message."
-
 #~ msgid "Extra names and addresses this account can send as."
 #~ msgstr ""
 #~ "Noms et adresses supplémentaires sous lesquels ce compte peut envoyer des "
@@ -9455,9 +9498,6 @@ msgstr "Hyprlab"
 
 #~ msgid "The ⋯ row under each message."
 #~ msgstr "La ligne ⋯ sous chaque message."
-
-#~ msgid "Open the actions palette on hover"
-#~ msgstr "Ouvrir la palette d’actions au survol"
 
 #~ msgid "Actions palette timeout"
 #~ msgstr "Délai d’expiration de la palette d’actions"

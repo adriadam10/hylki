@@ -1,10 +1,11 @@
 %global appid co.hyprlab.Hylki
 # The payload is a binary built outside rpmbuild (tools/build-packages.sh),
-# so there is nothing to extract debuginfo from.
+# with no debug info to extract; its symbol table stays for crash reports
+# (#449).
 %global debug_package %{nil}
 
 Name:           hylki
-Version:        1.49.1
+Version:        1.49.2
 Release:        1%{?dist}
 Summary:        A clean, fast GNOME-native email client
 License:        AGPL-3.0-or-later

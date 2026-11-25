@@ -517,6 +517,8 @@ pub(crate) struct AppModel {
     pub(super) contact_names: bool,
     /// Mail is named by its Reply-To sender (#641).
     pub(super) reply_to_sender: bool,
+    /// The addresses behind Duck Address relays are shown (#708).
+    pub(super) duck_addresses: bool,
     /// The list's search field and bulk bar open under the rows (#496).
     pub(super) list_search_bottom: bool,
     pub(super) list_bulk_bar_bottom: bool,
@@ -797,6 +799,10 @@ pub(crate) struct AppModel {
     pub(super) selection_from_cards: bool,
     /// Message rows take a sideways swipe to archive / delete (#92).
     pub(super) swipe_enabled: bool,
+    /// Message rows show buttons under their text on hover.
+    pub(super) hover_actions: bool,
+    /// Those buttons, in order.
+    pub(super) hover_action_buttons: Vec<config::HoverAction>,
     /// The message list's swipe-gesture sides are swapped (#swipe).
     pub(super) swipe_reversed: bool,
     /// How far a trackpad two-finger swipe has to travel to fire the action

@@ -2011,6 +2011,12 @@ msgstr ""
 msgid "Signature"
 msgstr "Signatura"
 
+msgid "Read/Unread"
+msgstr "Llegit/No llegit"
+
+msgid "Spam"
+msgstr "Brossa"
+
 msgid "Replied"
 msgstr "Respost"
 
@@ -2075,12 +2081,6 @@ msgstr "Nom (Z a A)"
 
 msgid "Full Path"
 msgstr "Camí complet"
-
-msgid "Spam"
-msgstr "Brossa"
-
-msgid "Read/Unread"
-msgstr "Llegit/No llegit"
 
 msgid "Move To"
 msgstr "Mou a"
@@ -4535,6 +4535,9 @@ msgstr "Normal"
 msgid "Low"
 msgstr ""
 
+msgid "Sign with S/MIME"
+msgstr ""
+
 msgid "Show the message as it will be sent"
 msgstr "Mostra el missatge tal com s'enviarà"
 
@@ -4552,6 +4555,9 @@ msgstr "Insereix abans del text"
 
 msgid "Insert After the Text"
 msgstr "Insereix després del text"
+
+msgid "Mail sent with OpenPGP is not signed with S/MIME."
+msgstr ""
 
 msgid "Show Original"
 msgstr "Mostra l'original"
@@ -4963,6 +4969,9 @@ msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
 msgid "Show the Reply-To sender"
+msgstr ""
+
+msgid "Show the address behind a Duck Address"
 msgstr ""
 
 msgid "Layout"
@@ -6628,6 +6637,24 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
+#, fuzzy
+msgid "Drop actions on the row · up to {n}"
+msgstr "Sempre visible · fins a {n}"
+
+#, fuzzy
+msgid "Drop actions here"
+msgstr "Deixa anar un botó aquí per amagar-lo"
+
+#, fuzzy
+msgid "Drop an action here to hide it"
+msgstr "Deixa anar un botó aquí per amagar-lo"
+
+msgid "Lunch on Friday?"
+msgstr ""
+
+msgid "Are you free at noon? There is a new place by the station."
+msgstr ""
+
 msgid "Messages already read"
 msgstr "Missatges ja llegits"
 
@@ -7261,6 +7288,17 @@ msgstr ""
 "Augmenta-la si els lliscaments queden curts. Els arrossegaments del ratolí "
 "no es veuen afectats."
 
+#, fuzzy
+msgid "Hover Actions"
+msgstr "Accions"
+
+#, fuzzy
+msgid "Show actions on hover"
+msgstr "Obre la paleta d'accions en passar-hi per sobre"
+
+msgid "Restore Defaults"
+msgstr "Restaura els valors per defecte"
+
 msgid "Columns"
 msgstr "Columnes"
 
@@ -7277,9 +7315,6 @@ msgstr "Ajusta les columnes a la llista"
 
 msgid "Off, a narrow list scrolls sideways."
 msgstr "Desactivat, una llista estreta es desplaça lateralment."
-
-msgid "Restore Defaults"
-msgstr "Restaura els valors per defecte"
 
 msgid "Hylki collects no telemetry and sends no analytics."
 msgstr "L'Hylki no recull cap telemetria ni envia analítiques."
@@ -8032,6 +8067,22 @@ msgstr ""
 "no tens cap clau OpenPGP pròpia per a {addr}; genera'n una a Paràmetres, "
 "OpenPGP"
 
+msgid ""
+"No S/MIME certificate for {address}. Import one with gpgsm, or turn off Sign "
+"with S/MIME in the Send menu."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has been revoked."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has expired."
+msgstr ""
+
+msgid ""
+"The S/MIME certificate for {address} is not trusted. Add its root "
+"certificate to gpgsm's trustlist.txt."
+msgstr ""
+
 msgid "Could not save template: {e}"
 msgstr "No s'ha pogut desar la plantilla: {e}"
 
@@ -8417,6 +8468,45 @@ msgid "Run every rule over the mail already in your inboxes"
 msgstr ""
 "Executa totes les regles sobre el correu que ja hi ha a les bústies d'entrada"
 
+msgid "Keys are managed under OpenPGP in the sidebar."
+msgstr "Les claus es gestionen a OpenPGP, a la barra lateral."
+
+msgid "Automatic uses the key whose address matches."
+msgstr "Automàtic utilitza la clau l'adreça de la qual coincideix."
+
+msgid "Sign messages by default"
+msgstr "Signa els missatges per defecte"
+
+msgid "Hide the subject of encrypted mail"
+msgstr "Amaga l'assumpte del correu xifrat"
+
+msgid "Only the recipients see the subject. Others see \"...\"."
+msgstr "Només els destinataris veuen l'assumpte. Els altres veuen «...»."
+
+#, fuzzy
+msgid "Send your key with your mail"
+msgstr "So per a correu nou"
+
+msgid "Autocrypt. Keys others send this way are kept too."
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt by default"
+msgstr "Expandeix les converses per defecte"
+
+msgid "Mail to people who ask for the same is encrypted."
+msgstr ""
+
+msgid "S/MIME"
+msgstr ""
+
+msgid "Certificates are managed with gpgsm."
+msgstr ""
+
+#, fuzzy
+msgid "The Send menu turns it off for one message."
+msgstr "La clau del remitent s'ha importat del missatge."
+
 msgid "GNOME Online Account"
 msgstr "Compte en línia del GNOME"
 
@@ -8701,50 +8791,6 @@ msgstr ""
 
 msgid "No hidden folders."
 msgstr "No hi ha carpetes amagades."
-
-msgid "Keys are managed under OpenPGP in the sidebar."
-msgstr "Les claus es gestionen a OpenPGP, a la barra lateral."
-
-msgid "Automatic uses the key whose address matches."
-msgstr "Automàtic utilitza la clau l'adreça de la qual coincideix."
-
-msgid "Sign messages by default"
-msgstr "Signa els missatges per defecte"
-
-msgid "Hide the subject of encrypted mail"
-msgstr "Amaga l'assumpte del correu xifrat"
-
-msgid "Only the recipients see the subject. Others see \"...\"."
-msgstr "Només els destinataris veuen l'assumpte. Els altres veuen «...»."
-
-#, fuzzy
-msgid "Send your key with your mail"
-msgstr "So per a correu nou"
-
-msgid "Autocrypt. Keys others send this way are kept too."
-msgstr ""
-
-#, fuzzy
-msgid "Encrypt by default"
-msgstr "Expandeix les converses per defecte"
-
-msgid "Mail to people who ask for the same is encrypted."
-msgstr ""
-
-msgid "S/MIME"
-msgstr ""
-
-msgid "Certificates are managed with gpgsm."
-msgstr ""
-
-#, fuzzy
-msgid "Sign every message"
-msgstr "Cerca al missatge"
-
-msgid ""
-"With the certificate for the sender's address. Mail sent with OpenPGP is not "
-"signed twice."
-msgstr ""
 
 msgid "Your password is kept in the system keyring, never in plain text."
 msgstr ""
@@ -9534,9 +9580,6 @@ msgstr "Hyprlab"
 
 #~ msgid "The ⋯ row under each message."
 #~ msgstr "La fila ⋯ sota cada missatge."
-
-#~ msgid "Open the actions palette on hover"
-#~ msgstr "Obre la paleta d'accions en passar-hi per sobre"
 
 #~ msgid "Actions palette timeout"
 #~ msgstr "Temps d'espera de la paleta d'accions"

@@ -540,6 +540,7 @@ impl AppModel {
             | PrefOutput::SetContactsSearchOpen(..)
             | PrefOutput::SetContactNames(..)
             | PrefOutput::SetReplyToSender(..)
+            | PrefOutput::SetDuckAddresses(..)
             | PrefOutput::SetListSearchBottom(..)
             | PrefOutput::SetListBulkBarBottom(..)
             | PrefOutput::SetListSearchStart(..)
@@ -551,6 +552,7 @@ impl AppModel {
             | PrefOutput::SetAttachmentsRow(..)
             | PrefOutput::ResetColumnWidths
             | PrefOutput::SetSwipeEnabled(..)
+            | PrefOutput::SetHoverActions(..)
             | PrefOutput::SetSwipeReversed(..)
             | PrefOutput::SetSwipeSensitivity(..)) => self.on_prefs_list_pref(pref, sender),
             pref @ (PrefOutput::SetComposeInline(..)

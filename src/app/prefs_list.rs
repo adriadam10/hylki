@@ -48,6 +48,11 @@ impl AppModel {
                     self.apply_reply_to_sender();
                 }
             }
+            PrefOutput::SetDuckAddresses(on) => {
+                if pref!(self.duck_addresses = on) {
+                    self.apply_duck_addresses();
+                }
+            }
             PrefOutput::SetContactsSearchOpen(on) => {
                 if pref!(self.contacts_search_open = on) {
                     self.contacts_page
@@ -126,6 +131,20 @@ impl AppModel {
                 if pref!(self.swipe_enabled = on) {
                     self.message_list
                         .emit(MessageListInput::SetSwipeEnabled(on));
+                }
+            }
+
+            PrefOutput::SetHoverActions(on, actions) => {
+                if self.hover_actions != on || self.hover_action_buttons != actions {
+                    self.hover_actions = on;
+                    self.hover_action_buttons = actions.clone();
+                    self.save_settings();
+                    self.message_list
+                        .emit(MessageListInput::SetHoverActions(if on {
+                            actions
+                        } else {
+                            Vec::new()
+                        }));
                 }
             }
 

@@ -2,15 +2,51 @@
 
 ## Unreleased
 
-- **New: S/MIME signing** (#478, requested by keithvassallomt). An account
-  can sign every message it sends with an S/MIME certificate: Settings →
-  Accounts → S/MIME → Sign every message, or `smime_sign = true` in
-  `accounts.toml`. Signing goes through gpgsm, so the certificate is imported
-  into GnuPG and gpg-agent asks for its passphrase. The message goes out as
-  `multipart/signed` with an `application/pkcs7-signature` part, in the same
-  layout as OpenPGP's. A message signed or encrypted with OpenPGP is not
-  signed twice, and drafts are not signed. Reading S/MIME mail and encrypting
-  with it are not supported yet.
+- **New: the address behind a Duck Address** (#708, requested by
+  somepaulo). Settings → Contacts → Show the address behind a Duck Address
+  shows a DuckDuckGo Email Protection relay address such as
+  `brian_at_gmail.com_jane@duck.com` as brian@gmail.com, with a `duck.com`
+  mark whose tooltip holds the relay address: in the reader's sender and
+  recipient lines, in the composer's recipient pills, and in the list and
+  notifications where the mail gives no name. The sender's picture and a
+  saved contact's name go by the address behind it. Replies, Copy Address
+  and new messages still use the relay address. Off by default. Search
+  finds a relay address by the address behind it, with `from:` and `to:`
+  too, whether the switch is on or off.
+
+- **New: crash reports** (#449, requested by 3v1n0). A crash, a GTK abort
+  among them, writes a report to stderr and to `crash.log` in Hylki's data
+  folder (`~/.var/app/co.hyprlab.Hylki/data/hylki/` in the Flatpak): the
+  signal, GLib's assertion message, the last panic, a backtrace of the
+  thread that crashed and the last 400 lines of the log. Settings → System →
+  Export log includes the newest report. GLib and GTK warnings and criticals
+  are in the log too. Release builds keep their symbol table, so the
+  backtrace names Hylki's functions; the process still ends with the
+  original signal and leaves its core dump as before.
+
+- **New: S/MIME signing** (#478, requested by keithvassallomt; PR #705 by
+  Adrià). An account can sign the mail it sends with an S/MIME certificate: Settings → Accounts → S/MIME → Sign messages by default, or
+  `smime_sign = true` in `accounts.toml`. The menu beside Send then has Sign
+  with S/MIME, ticked, to untick for one message. Signing goes through gpgsm,
+  so the certificate is imported into GnuPG and gpg-agent asks for its
+  passphrase. The message goes out as `multipart/signed` with an
+  `application/pkcs7-signature` part, in the same layout as OpenPGP's. It is
+  signed with the certificate for the From address; an alias without one
+  stops the send with a message saying so. When the certificate authority's
+  revocation list cannot be fetched, the message is signed without that
+  check; a revoked certificate is refused. Mail signed or encrypted with
+  OpenPGP, drafts and mail the app sends by itself are not signed with
+  S/MIME. Reading S/MIME mail and encrypting with it are not supported yet.
+
+- **New: actions under a message row on hover** (#702, started by
+  BastianC). Pointing at a row opens a line of buttons under its text, Star,
+  Archive and Delete unless changed, and the row grows to hold them rather
+  than covering the date. It is on for a new install and off after an
+  update. Settings → Message List → Hover Actions switches them on or off and
+  chooses up to eight from Star, Read/Unread, Archive, Delete,
+  Spam, Reply, Reply All and Forward, by dragging them onto a sample row
+  that shows the result as it changes. Star and Read/Unread follow the
+  message's state, and Spam is Not Spam in Junk.
 
 - **New: Microsoft 365 shared mailboxes** (#701, requested by valderys).
   Settings → Accounts → Shared Mailboxes adds a shared mailbox by its address,
@@ -39,6 +75,30 @@
   and a half for a face not looked up yet, and is left off a summary of
   several messages and when Show sender and subject is off. Works on GNOME and Plasma,
   in the Flatpak and outside it.
+
+- **Fixed: the composer was cut off at the window's edge in a narrow reader**
+  (fixed by adriadam10). In languages whose labels are longer than English,
+  such as Spanish, the folded composer header needs more than the reader's
+  441-pixel floor, so with the window tiled to half the screen the composer
+  ran past the right edge, its body text with it. While a composer covers
+  the reader or a contact card, that pane now goes no narrower than the
+  composer, and the list gives up the difference.
+
+- **Fixed: the account ring around avatars in All Inboxes was cut at the
+  sides** (#706, reported by user839292874). On GTK 4.18 and older, as on
+  Debian 13, the ring drawn outside each avatar lost its left and right
+  edges.
+
+- **Fixed: a second u scrolled the list to the top** (#392, reported by
+  3v1n0). With the Gmail-style keys, u with no message open now leaves the
+  list on the row the keyboard is on, or on the one last read.
+
+- **Fixed: a message dated centuries ahead** (#709, reported by
+  user839292874). A message whose Date header lies more than a day in the
+  future, such as one that showed as 12 Jan 2612, is dated by when the IMAP
+  server received it. Such a date also kept the message at the top of the
+  list. A message already in the cache takes the new date when the folder's
+  newest messages are synced again, or after Reset Cache for an older one.
 
 - **Fixed: the date filter's calendar looked out of place** (#696, fixed by
   José Miguel Sarasola). The calendar in the Dates column of the sort and
@@ -85,6 +145,24 @@
   Emptying every account's Trash or Junk from the unified row gives the
   total and each account's own count. A server that does not answer within
   a second and a half leaves the question as it was, without a number.
+
+- **Translations:** Dutch (PR #704 by BastianC), new, 2596 of 2627 strings
+  translated. Portuguese (Portugal) and Portuguese (Brazil) completed again
+  (PR #707 by Paulo Fino), 2627 of 2628 strings each. Simplified Chinese
+  (#155 by lancelee25), new, 2596 of 2628 strings translated. Turkish (PR #710
+  by f4646), new, 2617 of 2628 strings translated.
+
+## 1.49.2 — 2026-11-23
+
+A patch release with one fix: the window appears when Hylki starts in All
+Inboxes.
+
+- **Fixed: no window and a busy processor when starting in All Inboxes**
+  (#700, reported by mbetrifork). Showing the search scope in its menu turned
+  that scope's radio on, and the radio sent the scope back to the list. Two
+  different scopes sent in a row then echoed each other forever, so the
+  window never appeared and later launches timed out handing off to it. The
+  menu no longer sends back a scope it is only showing.
 
 ## 1.49.1 — 2026-11-22
 

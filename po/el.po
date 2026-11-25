@@ -2000,6 +2000,12 @@ msgstr ""
 msgid "Signature"
 msgstr "Υπογραφή"
 
+msgid "Read/Unread"
+msgstr "Αναγνωσμένο/Μη αναγνωσμένο"
+
+msgid "Spam"
+msgstr "Ανεπιθύμητα"
+
 msgid "Replied"
 msgstr "Απαντήθηκε"
 
@@ -2059,12 +2065,6 @@ msgstr "Όνομα (Ω έως Α)"
 
 msgid "Full Path"
 msgstr "Πλήρης διαδρομή"
-
-msgid "Spam"
-msgstr "Ανεπιθύμητα"
-
-msgid "Read/Unread"
-msgstr "Αναγνωσμένο/Μη αναγνωσμένο"
 
 msgid "Move To"
 msgstr "Μετακίνηση σε"
@@ -4525,6 +4525,9 @@ msgstr "Κανονική"
 msgid "Low"
 msgstr "Χαμηλή"
 
+msgid "Sign with S/MIME"
+msgstr ""
+
 msgid "Show the message as it will be sent"
 msgstr "Εμφάνιση του μηνύματος όπως θα σταλεί"
 
@@ -4542,6 +4545,9 @@ msgstr "Εισαγωγή πριν από το κείμενο"
 
 msgid "Insert After the Text"
 msgstr "Εισαγωγή μετά το κείμενο"
+
+msgid "Mail sent with OpenPGP is not signed with S/MIME."
+msgstr ""
 
 msgid "Show Original"
 msgstr "Εμφάνιση πρωτοτύπου"
@@ -4951,6 +4957,9 @@ msgstr ""
 "μηνύματος."
 
 msgid "Show the Reply-To sender"
+msgstr ""
+
+msgid "Show the address behind a Duck Address"
 msgstr ""
 
 msgid "Layout"
@@ -6600,6 +6609,24 @@ msgstr "Ο έλεγχος διακόπηκε απροσδόκητα."
 msgid "It works: {server} answered."
 msgstr "Λειτουργεί: ο διακομιστής {server} αποκρίθηκε."
 
+#, fuzzy
+msgid "Drop actions on the row · up to {n}"
+msgstr "Πάντα ορατή · έως {n}"
+
+#, fuzzy
+msgid "Drop actions here"
+msgstr "Αποθέστε ένα κουμπί εδώ για να το αποκρύψετε"
+
+#, fuzzy
+msgid "Drop an action here to hide it"
+msgstr "Αποθέστε ένα κουμπί εδώ για να το αποκρύψετε"
+
+msgid "Lunch on Friday?"
+msgstr ""
+
+msgid "Are you free at noon? There is a new place by the station."
+msgstr ""
+
 msgid "Messages already read"
 msgstr "Μηνύματα που έχουν ήδη αναγνωστεί"
 
@@ -7235,6 +7262,17 @@ msgstr ""
 "Αυξήστε την τιμή αν οι κινήσεις σάρωσης δεν φτάνουν μέχρι το τέλος. Οι "
 "κινήσεις με το ποντίκι δεν επηρεάζονται."
 
+#, fuzzy
+msgid "Hover Actions"
+msgstr "Ενέργειες"
+
+#, fuzzy
+msgid "Show actions on hover"
+msgstr "Άνοιγμα της παλέτας ενεργειών κατά την αιώρηση"
+
+msgid "Restore Defaults"
+msgstr "Επαναφορά προεπιλογών"
+
 msgid "Columns"
 msgstr "Στήλες"
 
@@ -7251,9 +7289,6 @@ msgstr "Προσαρμογή στηλών στο πλάτος της λίστα�
 
 msgid "Off, a narrow list scrolls sideways."
 msgstr "Ανενεργό: μια στενή λίστα μετακινείται οριζόντια."
-
-msgid "Restore Defaults"
-msgstr "Επαναφορά προεπιλογών"
 
 msgid "Hylki collects no telemetry and sends no analytics."
 msgstr "Το Hylki δεν συλλέγει τηλεμετρία ούτε στέλνει αναλυτικά δεδομένα."
@@ -8015,6 +8050,22 @@ msgstr ""
 "δεν υπάρχει δικό σας κλειδί OpenPGP για τη διεύθυνση {addr}· δημιουργήστε "
 "ένα στις Ρυθμίσεις, OpenPGP"
 
+msgid ""
+"No S/MIME certificate for {address}. Import one with gpgsm, or turn off Sign "
+"with S/MIME in the Send menu."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has been revoked."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has expired."
+msgstr ""
+
+msgid ""
+"The S/MIME certificate for {address} is not trusted. Add its root "
+"certificate to gpgsm's trustlist.txt."
+msgstr ""
+
 msgid "Could not save template: {e}"
 msgstr "Δεν ήταν δυνατή η αποθήκευση του προτύπου: {e}"
 
@@ -8400,6 +8451,47 @@ msgid "Run every rule over the mail already in your inboxes"
 msgstr ""
 "Εφαρμογή κάθε κανόνα στην αλληλογραφία που βρίσκεται ήδη στα εισερχόμενά σας"
 
+msgid "Keys are managed under OpenPGP in the sidebar."
+msgstr ""
+"Η διαχείριση των κλειδιών γίνεται στην ενότητα OpenPGP της πλευρικής στήλης."
+
+msgid "Automatic uses the key whose address matches."
+msgstr ""
+"Η Αυτόματη επιλογή χρησιμοποιεί το κλειδί του οποίου η διεύθυνση ταιριάζει."
+
+msgid "Sign messages by default"
+msgstr "Υπογραφή μηνυμάτων από προεπιλογή"
+
+msgid "Hide the subject of encrypted mail"
+msgstr "Απόκρυψη του θέματος κρυπτογραφημένων μηνυμάτων"
+
+msgid "Only the recipients see the subject. Others see \"...\"."
+msgstr "Το θέμα εμφανίζεται μόνο στους παραλήπτες. Οι υπόλοιποι βλέπουν «…»."
+
+#, fuzzy
+msgid "Send your key with your mail"
+msgstr "Ήχος για νέα αλληλογραφία"
+
+msgid "Autocrypt. Keys others send this way are kept too."
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt by default"
+msgstr "Ανάπτυξη συζητήσεων από προεπιλογή"
+
+msgid "Mail to people who ask for the same is encrypted."
+msgstr ""
+
+msgid "S/MIME"
+msgstr ""
+
+msgid "Certificates are managed with gpgsm."
+msgstr ""
+
+#, fuzzy
+msgid "The Send menu turns it off for one message."
+msgstr "Το κλειδί του αποστολέα εισήχθη από το μήνυμα."
+
 msgid "GNOME Online Account"
 msgstr "Διαδικτυακός λογαριασμός GNOME"
 
@@ -8691,52 +8783,6 @@ msgstr ""
 
 msgid "No hidden folders."
 msgstr "Δεν υπάρχουν κρυφοί φάκελοι."
-
-msgid "Keys are managed under OpenPGP in the sidebar."
-msgstr ""
-"Η διαχείριση των κλειδιών γίνεται στην ενότητα OpenPGP της πλευρικής στήλης."
-
-msgid "Automatic uses the key whose address matches."
-msgstr ""
-"Η Αυτόματη επιλογή χρησιμοποιεί το κλειδί του οποίου η διεύθυνση ταιριάζει."
-
-msgid "Sign messages by default"
-msgstr "Υπογραφή μηνυμάτων από προεπιλογή"
-
-msgid "Hide the subject of encrypted mail"
-msgstr "Απόκρυψη του θέματος κρυπτογραφημένων μηνυμάτων"
-
-msgid "Only the recipients see the subject. Others see \"...\"."
-msgstr "Το θέμα εμφανίζεται μόνο στους παραλήπτες. Οι υπόλοιποι βλέπουν «…»."
-
-#, fuzzy
-msgid "Send your key with your mail"
-msgstr "Ήχος για νέα αλληλογραφία"
-
-msgid "Autocrypt. Keys others send this way are kept too."
-msgstr ""
-
-#, fuzzy
-msgid "Encrypt by default"
-msgstr "Ανάπτυξη συζητήσεων από προεπιλογή"
-
-msgid "Mail to people who ask for the same is encrypted."
-msgstr ""
-
-msgid "S/MIME"
-msgstr ""
-
-msgid "Certificates are managed with gpgsm."
-msgstr ""
-
-#, fuzzy
-msgid "Sign every message"
-msgstr "Εύρεση στο μήνυμα"
-
-msgid ""
-"With the certificate for the sender's address. Mail sent with OpenPGP is not "
-"signed twice."
-msgstr ""
 
 msgid "Your password is kept in the system keyring, never in plain text."
 msgstr ""
@@ -9555,9 +9601,6 @@ msgstr "Hyprlab"
 
 #~ msgid "The ⋯ row under each message."
 #~ msgstr "Η γραμμή ⋯ κάτω από κάθε μήνυμα."
-
-#~ msgid "Open the actions palette on hover"
-#~ msgstr "Άνοιγμα της παλέτας ενεργειών κατά την αιώρηση"
 
 #~ msgid "Actions palette timeout"
 #~ msgstr "Χρόνος λήξης παλέτας ενεργειών"

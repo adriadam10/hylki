@@ -5,28 +5,23 @@
 use lettre::message::header::{ContentDisposition, ContentType};
 use lettre::message::SinglePart;
 
-use crate::config::AccountConfig;
-use crate::mail::smime::{sign_detached, Gpgsm};
+use crate::i18n::{i18n, i18n_f};
+use crate::mail::smime::{sign_detached, Gpgsm, SignError};
 use crate::worker::compose::pgp_mime::{signed_multipart, PgpEntity};
 use crate::worker::smtp::SmtpError;
 
-/// `entity` signed with the certificate for the From address, else the
-/// one for the account's own address (an alias the certificate does not
-/// name still goes out signed, as Thunderbird signs it).
+/// `entity` signed with the certificate for the From address. An alias
+/// the account's certificate does not name is not signed with it: Outlook
+/// and Thunderbird warn when the signer is not the sender, so the sender
+/// hears it first, and can send that one unsigned from the Send menu.
 pub(super) fn smime_sign(
     gpgsm: &Gpgsm,
-    account: &AccountConfig,
     from_addr: &str,
     entity: PgpEntity,
 ) -> Result<SinglePart, SmtpError> {
     let inner = entity.formatted();
-    let (signature, micalg) = sign_detached(gpgsm, &inner, from_addr).or_else(|e| {
-        if from_addr.eq_ignore_ascii_case(&account.email) {
-            Err(e)
-        } else {
-            sign_detached(gpgsm, &inner, &account.email).map_err(|_| e)
-        }
-    })?;
+    let (signature, micalg) =
+        sign_detached(gpgsm, &inner, from_addr).map_err(|e| refusal(&e, from_addr))?;
     let sig_part = SinglePart::builder()
         .header(
             ContentType::parse("application/pkcs7-signature; name=\"smime.p7s\"")
@@ -42,10 +37,32 @@ pub(super) fn smime_sign(
     )
 }
 
+/// What the sender reads when gpgsm would not sign.
+fn refusal(error: &SignError, address: &str) -> SmtpError {
+    let args = [("address", address)];
+    match error {
+        SignError::NoCertificate => i18n_f(
+            "No S/MIME certificate for {address}. Import one with gpgsm, or turn off Sign with S/MIME in the Send menu.",
+            &args,
+        ),
+        SignError::Revoked => i18n_f(
+            "The S/MIME certificate for {address} has been revoked.",
+            &args,
+        ),
+        SignError::Expired => i18n_f("The S/MIME certificate for {address} has expired.", &args),
+        SignError::NotTrusted => i18n_f(
+            "The S/MIME certificate for {address} is not trusted. Add its root certificate to gpgsm's trustlist.txt.",
+            &args,
+        ),
+        SignError::Other(text) if text.is_empty() => i18n("gpgsm did not sign the message."),
+        SignError::Other(text) => text.clone(),
+    }
+    .into()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::worker::test_support::sample_account;
     use base64::Engine;
     use std::io::Write;
     use std::process::Command;
@@ -150,8 +167,9 @@ mod tests {
 
     /// Signed through a real gpgsm: the message comes out as S/MIME
     /// multipart/signed whose signature gpgsm verifies over the exact
-    /// bytes of the signed part, from the account's address and from an
-    /// alias the certificate does not name. Skipped where gpgsm is missing.
+    /// bytes of the signed part. An alias the certificate does not name
+    /// is refused, in words that say what to do. Skipped where gpgsm is
+    /// missing.
     #[test]
     fn signs_into_multipart_signed_that_verifies() {
         let home = std::env::temp_dir().join(format!("hylki-gpgsm-{}", std::process::id()));
@@ -160,32 +178,36 @@ mod tests {
             eprintln!("gpgsm not installed; skipping");
             return;
         };
-        let mut account = sample_account();
-        account.email = "sender@hylki.invalid".into();
-        for from in ["sender@hylki.invalid", "alias@hylki.invalid"] {
-            let entity = PgpEntity::Single(SinglePart::plain(String::from("signed body text")));
-            let part = smime_sign(&gpgsm, &account, from, entity).expect("signed");
-            let raw = String::from_utf8(part.formatted()).unwrap();
-            assert!(
-                raw.contains("protocol=\"application/pkcs7-signature\""),
-                "{raw}"
-            );
-            assert!(raw.contains("micalg=\"sha-256\""), "{raw}");
-            assert!(raw.contains("filename=\"smime.p7s\""), "{raw}");
-            let (signed, sig) = split_signed(&raw);
-            assert!(signed.contains("signed body text"), "{signed}");
-            let (sig_path, data_path) = (home.join("sig.p7s"), home.join("data"));
-            std::fs::write(&sig_path, sig).unwrap();
-            std::fs::write(&data_path, signed).unwrap();
-            let out = gpgsm
-                .command()
-                .arg("--verify")
-                .arg(&sig_path)
-                .arg(&data_path)
-                .output()
-                .unwrap();
-            let status = String::from_utf8_lossy(&out.stderr);
-            assert!(status.contains("[GNUPG:] GOODSIG"), "{status}");
-        }
+        let entity = || PgpEntity::Single(SinglePart::plain(String::from("signed body text")));
+        let part = smime_sign(&gpgsm, "sender@hylki.invalid", entity()).expect("signed");
+        let raw = String::from_utf8(part.formatted()).unwrap();
+        assert!(
+            raw.contains("protocol=\"application/pkcs7-signature\""),
+            "{raw}"
+        );
+        assert!(raw.contains("micalg=\"sha-256\""), "{raw}");
+        assert!(raw.contains("filename=\"smime.p7s\""), "{raw}");
+        let (signed, sig) = split_signed(&raw);
+        assert!(signed.contains("signed body text"), "{signed}");
+        let (sig_path, data_path) = (home.join("sig.p7s"), home.join("data"));
+        std::fs::write(&sig_path, sig).unwrap();
+        std::fs::write(&data_path, signed).unwrap();
+        let out = gpgsm
+            .command()
+            .arg("--verify")
+            .arg(&sig_path)
+            .arg(&data_path)
+            .output()
+            .unwrap();
+        let status = String::from_utf8_lossy(&out.stderr);
+        assert!(status.contains("[GNUPG:] GOODSIG"), "{status}");
+
+        let err = smime_sign(&gpgsm, "alias@hylki.invalid", entity())
+            .expect_err("no certificate names the alias")
+            .to_string();
+        assert!(
+            err.contains("No S/MIME certificate for alias@hylki.invalid"),
+            "{err}"
+        );
     }
 }

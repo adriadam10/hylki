@@ -37,6 +37,7 @@ impl Preferences {
                 search_open: init.contacts_search_open,
                 contact_names: init.contact_names,
                 reply_to_sender: init.reply_to_sender,
+                duck_addresses: init.duck_addresses,
                 placement: init.contacts_placement,
             })
             .forward(sender.input_sender(), PrefInput::Contacts);
@@ -102,6 +103,8 @@ impl Preferences {
         self.column_editor = Some(ColumnEditor::build(&widgets.list.column_editor_box, sender));
         self.columns_group = Some(widgets.list.columns_group.clone().upcast());
         self.rebuild_column_chips();
+        self.hover_editor = Some(HoverEditor::build(&widgets.list.hover_editor_box, sender));
+        self.rebuild_hover_chips();
     }
 
     /// The search, the close key, the first page shown, and the other pages

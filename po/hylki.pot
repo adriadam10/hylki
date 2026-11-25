@@ -1828,6 +1828,12 @@ msgstr ""
 msgid "Signature"
 msgstr ""
 
+msgid "Read/Unread"
+msgstr ""
+
+msgid "Spam"
+msgstr ""
+
 msgid "Replied"
 msgstr ""
 
@@ -1886,12 +1892,6 @@ msgid "Name (Z to A)"
 msgstr ""
 
 msgid "Full Path"
-msgstr ""
-
-msgid "Spam"
-msgstr ""
-
-msgid "Read/Unread"
 msgstr ""
 
 msgid "Move To"
@@ -4109,6 +4109,9 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
+msgid "Sign with S/MIME"
+msgstr ""
+
 msgid "Show the message as it will be sent"
 msgstr ""
 
@@ -4125,6 +4128,9 @@ msgid "Insert Before the Text"
 msgstr ""
 
 msgid "Insert After the Text"
+msgstr ""
+
+msgid "Mail sent with OpenPGP is not signed with S/MIME."
 msgstr ""
 
 msgid "Show Original"
@@ -4482,6 +4488,9 @@ msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
 msgid "Show the Reply-To sender"
+msgstr ""
+
+msgid "Show the address behind a Duck Address"
 msgstr ""
 
 msgid "Layout"
@@ -5999,6 +6008,21 @@ msgstr ""
 msgid "It works: {server} answered."
 msgstr ""
 
+msgid "Drop actions on the row · up to {n}"
+msgstr ""
+
+msgid "Drop actions here"
+msgstr ""
+
+msgid "Drop an action here to hide it"
+msgstr ""
+
+msgid "Lunch on Friday?"
+msgstr ""
+
+msgid "Are you free at noon? There is a new place by the station."
+msgstr ""
+
 msgid "Messages already read"
 msgstr ""
 
@@ -6594,6 +6618,15 @@ msgstr ""
 msgid "Raise it if swipes stop short. Mouse drags are unaffected."
 msgstr ""
 
+msgid "Hover Actions"
+msgstr ""
+
+msgid "Show actions on hover"
+msgstr ""
+
+msgid "Restore Defaults"
+msgstr ""
+
 msgid "Columns"
 msgstr ""
 
@@ -6606,9 +6639,6 @@ msgid "Fit columns to the list"
 msgstr ""
 
 msgid "Off, a narrow list scrolls sideways."
-msgstr ""
-
-msgid "Restore Defaults"
 msgstr ""
 
 msgid "Hylki collects no telemetry and sends no analytics."
@@ -7309,6 +7339,22 @@ msgid ""
 "no OpenPGP key of your own for {addr}; generate one under Settings, OpenPGP"
 msgstr ""
 
+msgid ""
+"No S/MIME certificate for {address}. Import one with gpgsm, or turn off Sign "
+"with S/MIME in the Send menu."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has been revoked."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has expired."
+msgstr ""
+
+msgid ""
+"The S/MIME certificate for {address} is not trusted. Add its root "
+"certificate to gpgsm's trustlist.txt."
+msgstr ""
+
 msgid "Could not save template: {e}"
 msgstr ""
 
@@ -7658,6 +7704,42 @@ msgstr ""
 msgid "Run every rule over the mail already in your inboxes"
 msgstr ""
 
+msgid "Keys are managed under OpenPGP in the sidebar."
+msgstr ""
+
+msgid "Automatic uses the key whose address matches."
+msgstr ""
+
+msgid "Sign messages by default"
+msgstr ""
+
+msgid "Hide the subject of encrypted mail"
+msgstr ""
+
+msgid "Only the recipients see the subject. Others see \"...\"."
+msgstr ""
+
+msgid "Send your key with your mail"
+msgstr ""
+
+msgid "Autocrypt. Keys others send this way are kept too."
+msgstr ""
+
+msgid "Encrypt by default"
+msgstr ""
+
+msgid "Mail to people who ask for the same is encrypted."
+msgstr ""
+
+msgid "S/MIME"
+msgstr ""
+
+msgid "Certificates are managed with gpgsm."
+msgstr ""
+
+msgid "The Send menu turns it off for one message."
+msgstr ""
+
 msgid "GNOME Online Account"
 msgstr ""
 
@@ -7917,47 +7999,6 @@ msgid ""
 msgstr ""
 
 msgid "No hidden folders."
-msgstr ""
-
-msgid "Keys are managed under OpenPGP in the sidebar."
-msgstr ""
-
-msgid "Automatic uses the key whose address matches."
-msgstr ""
-
-msgid "Sign messages by default"
-msgstr ""
-
-msgid "Hide the subject of encrypted mail"
-msgstr ""
-
-msgid "Only the recipients see the subject. Others see \"...\"."
-msgstr ""
-
-msgid "Send your key with your mail"
-msgstr ""
-
-msgid "Autocrypt. Keys others send this way are kept too."
-msgstr ""
-
-msgid "Encrypt by default"
-msgstr ""
-
-msgid "Mail to people who ask for the same is encrypted."
-msgstr ""
-
-msgid "S/MIME"
-msgstr ""
-
-msgid "Certificates are managed with gpgsm."
-msgstr ""
-
-msgid "Sign every message"
-msgstr ""
-
-msgid ""
-"With the certificate for the sender's address. Mail sent with OpenPGP is not "
-"signed twice."
 msgstr ""
 
 msgid "Your password is kept in the system keyring, never in plain text."

@@ -690,6 +690,21 @@ sets Reply-To to its own address is named by the list. Mail downloaded by
 an earlier version shows the Reply-To address in place of the name until
 it is fetched again.
 
+**Show the address behind a Duck Address**, below that, is for DuckDuckGo
+Email Protection. Mail between a Duck Address and someone else goes through
+a relay address that spells out the other person's address:
+`brian_at_gmail.com_jane@duck.com` is brian@gmail.com writing to, or written
+to from, jane@duck.com. With the switch on, the reader shows such an address
+as brian@gmail.com with a `duck.com` mark after it; pointing at the mark
+shows the relay address. The message list and notifications show it the
+same way where the mail gives no name, and a saved contact for
+brian@gmail.com names it. The sender's picture is looked up by
+brian@gmail.com, and a recipient pill in the composer shows it with the
+same mark. Clicking the address, Copy Address, replies and new messages
+keep using the relay address, so the mail still goes through duck.com. The
+switch is off by default. Searching for brian@gmail.com, `from:` and `to:`
+included, finds the relay address however it is set.
+
 A contact's photo is the sender's circle in the message list and in the
 reader's message headers. Without one, the circle shows the sender's
 Gravatar or their domain's logo when those are switched on in **Settings →
@@ -2009,7 +2024,7 @@ signature** or **Signed, unknown key**.
 
 ### S/MIME (signed mail)
 
-Hylki can sign everything an account sends with an S/MIME certificate, the
+Hylki can sign the mail an account sends with an S/MIME certificate, the
 kind a certificate authority issues for an email address. It signs through
 **gpgsm**, GnuPG's S/MIME program, so the certificate lives beside your
 OpenPGP keys and gpg-agent asks for its passphrase. Reading S/MIME mail and
@@ -2035,18 +2050,42 @@ openssl pkcs12 -in certificate.p12 -nodes |
 ```
 
 gpgsm signs only with a certificate whose chain ends at a root it trusts. If
-signing fails with *Not trusted*, `gpgsm --list-chain your@address` names the
-root; check its fingerprint against your system's certificate store and add it
-to `~/.gnupg/trustlist.txt` as `FINGERPRINT S`.
+sending says the certificate *is not trusted*, `gpgsm --list-chain
+your@address` names the root; check its fingerprint against your system's
+certificate store and add it to `~/.gnupg/trustlist.txt` as `FINGERPRINT S`.
 
 **2. Turn it on for the account**
 
-In *Settings → Accounts*, open the account and turn on *S/MIME → Sign every
-message*, or set `smime_sign = true` on the account in `accounts.toml`. Every
-message it sends is then signed with the certificate for the From address, or
-for the account's address when an alias has none of its own. A message you
-sign or encrypt with OpenPGP goes out with OpenPGP only. Drafts are not
-signed.
+In *Settings → Accounts*, open the account and turn on *S/MIME → Sign messages
+by default*, or set `smime_sign = true` on the account in `accounts.toml`.
+
+**3. Sending**
+
+The menu beside *Send* then has *Sign with S/MIME*, ticked. Untick it to send
+one message unsigned. The message is signed with the certificate for its From
+address:
+
+- An alias needs a certificate that names it. Without one, sending stops and
+  says so, rather than signing with the account's certificate, which
+  Outlook and Thunderbird flag as signed by someone other than the sender.
+  Untick *Sign with S/MIME* to send it unsigned.
+- With OpenPGP *Sign* or *Encrypt* on, the message goes out with OpenPGP
+  only, and *Sign with S/MIME* is greyed out.
+- Drafts are not signed, and neither is mail Hylki sends by itself: a
+  filter's forward, a read receipt, an answer to an invitation.
+
+Before it signs, gpgsm checks the certificate authority's revocation list.
+When the list cannot be fetched (offline, or the authority's server is down),
+the message is signed without that check, as Thunderbird does. A certificate
+the list says is revoked is refused.
+
+**Troubleshooting**
+
+- *No S/MIME certificate for an address*: gpgsm has no certificate with a
+  private key for it. `gpgsm --list-secret-keys` shows the ones it has; see
+  step 1.
+- *Has expired* or *has been revoked*: the certificate authority issues a
+  new certificate, which you import as in step 1.
 
 ### Dragging files into a message
 
@@ -2461,6 +2500,19 @@ A selected row keeps the selection color. It is on unless switched off.
 tags, Gmail labels and folder pill on a line of their own under the
 message's text, so the subject keeps the row's full width. It is off unless
 switched on; a single-line list keeps them in its Tags column.
+
+**Settings → Message List → Hover Actions** puts a line of buttons under a
+row's text while the pointer is on it: Star, Archive and Delete unless
+changed. The row grows to make room, so the buttons never cover the date or
+the text, and shuts again when the pointer leaves. **Show actions on hover**
+turns them on or off: on for a new install, off after an update from a
+version without them. Below it, a sample row shows the buttons as the list will:
+drag an action from **Not shown** onto the row to add it, along the row to
+move it, or back to **Not shown** to take it off. A row shows up to eight,
+from Star, Read/Unread, Archive, Delete, Spam, Reply, Reply All and Forward.
+Star and Read/Unread show the message's state, Spam is Not Spam in Junk, and
+Drafts leave out Read/Unread. A button acts on its row's message, or on the
+whole conversation on a conversation's row, as a swipe does.
 
 **Settings → Message List → Keep the search field open** shows the search
 field with the list all the time, instead of only after the search button,

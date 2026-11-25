@@ -190,6 +190,11 @@ shows. Want to join them? See [CONTRIBUTING.md](CONTRIBUTING.md).
   them went out with the wrong argument types, and the calendars of the date
   filter and the Snooze and Send Later picker drawn like the rest of their
   popover or dialog.
+- [**BastianC**](https://github.com/bastiancolpaert) ([#702](https://github.com/hyprlab/hylki/pull/702),
+  [#704](https://github.com/hyprlab/hylki/pull/704)): the buttons a message
+  row shows on hover, and the Dutch translation.
+- [**Adrià**](https://github.com/adriadam10) ([#705](https://github.com/hyprlab/hylki/pull/705)):
+  signing outgoing mail with S/MIME through gpgsm.
 
 ## Reports, design and ideas
 
@@ -240,6 +245,7 @@ report, all in 1.38; and to everyone who files issues and ideas.
 Every language Hylki speaks was given to it by somebody:
 
 - **Catalan:** [jolupa](https://github.com/jolupa)
+- **Dutch:** [BastianC](https://github.com/bastiancolpaert)
 - **French:** [frenchy82](https://github.com/frenchy82)
 - **German:** [Christian Lauinger](https://github.com/ChrisLauinger77) and
   [Samuel Edlmeier](https://github.com/samuel-edlmeier)
@@ -251,7 +257,9 @@ Every language Hylki speaks was given to it by somebody:
 - **Portuguese (Portugal and Brazil):** [Paulo Fino](https://github.com/somepaulo)
 - **Russian:** [Ilya Semenkovich](https://github.com/iliasen) and
   [FLASH911](https://github.com/FLASH911)
+- **Simplified Chinese:** [lancelee25](https://github.com/lancelee25)
 - **Spanish:** [Daniel Miguel](https://github.com/danielmigueltejedor)
+- **Turkish:** [f4646](https://github.com/f4646)
 
 Adding or updating one is the easiest way in: see [po/README.md](../po/README.md).
 

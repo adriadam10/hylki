@@ -2084,6 +2084,12 @@ msgstr ""
 msgid "Signature"
 msgstr "Aláírás"
 
+msgid "Read/Unread"
+msgstr "Olvasott/olvasatlan"
+
+msgid "Spam"
+msgstr "Levélszemét"
+
 #, fuzzy
 msgid "Replied"
 msgstr "Válasz"
@@ -2153,12 +2159,6 @@ msgstr "Név (Z–A)"
 
 msgid "Full Path"
 msgstr "Teljes elérési út"
-
-msgid "Spam"
-msgstr "Levélszemét"
-
-msgid "Read/Unread"
-msgstr "Olvasott/olvasatlan"
 
 msgid "Move To"
 msgstr "Áthelyezés ide"
@@ -4673,6 +4673,9 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
+msgid "Sign with S/MIME"
+msgstr ""
+
 msgid "Show the message as it will be sent"
 msgstr "Az üzenet megjelenítése úgy, ahogyan elküldésre kerül"
 
@@ -4695,6 +4698,9 @@ msgstr "Beillesztés a szövegbe"
 #, fuzzy
 msgid "Insert After the Text"
 msgstr "Beillesztés a szövegbe"
+
+msgid "Mail sent with OpenPGP is not signed with S/MIME."
+msgstr ""
 
 #, fuzzy
 msgid "Show Original"
@@ -5119,6 +5125,9 @@ msgid "Saved addresses show the contact's name, not the mail's."
 msgstr ""
 
 msgid "Show the Reply-To sender"
+msgstr ""
+
+msgid "Show the address behind a Duck Address"
 msgstr ""
 
 msgid "Layout"
@@ -6819,6 +6828,24 @@ msgid "It works: {server} answered."
 msgstr ""
 
 #, fuzzy
+msgid "Drop actions on the row · up to {n}"
+msgstr "Mindig megjelenítve · legfeljebb {n}"
+
+#, fuzzy
+msgid "Drop actions here"
+msgstr "Helyezze a kerülmb here ide hide it"
+
+#, fuzzy
+msgid "Drop an action here to hide it"
+msgstr "Helyezze a kerülmb here ide hide it"
+
+msgid "Lunch on Friday?"
+msgstr ""
+
+msgid "Are you free at noon? There is a new place by the station."
+msgstr ""
+
+#, fuzzy
 msgid "Messages already read"
 msgstr "Az üzenet elküldésre kész"
 
@@ -7478,6 +7505,17 @@ msgstr "Az érintőpad csúsztatási érzékenysége"
 msgid "Raise it if swipes stop short. Mouse drags are unaffected."
 msgstr ""
 
+#, fuzzy
+msgid "Hover Actions"
+msgstr "Műveletek"
+
+#, fuzzy
+msgid "Show actions on hover"
+msgstr "Műveletpaletta megnyitása, amikor a kurzor fölé van helyezve"
+
+msgid "Restore Defaults"
+msgstr "Alapértelmezett beállítások visszaállítása"
+
 msgid "Columns"
 msgstr ""
 
@@ -7492,9 +7530,6 @@ msgstr "Helyezze a kerülmb here ide hide it"
 
 msgid "Off, a narrow list scrolls sideways."
 msgstr ""
-
-msgid "Restore Defaults"
-msgstr "Alapértelmezett beállítások visszaállítása"
 
 msgid "Hylki collects no telemetry and sends no analytics."
 msgstr ""
@@ -8263,6 +8298,22 @@ msgstr ""
 "nincs saját OpenPGP-kulcs ehhez: {addr}; hozzon létre egyet a Beállítások → "
 "OpenPGP alatt"
 
+msgid ""
+"No S/MIME certificate for {address}. Import one with gpgsm, or turn off Sign "
+"with S/MIME in the Send menu."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has been revoked."
+msgstr ""
+
+msgid "The S/MIME certificate for {address} has expired."
+msgstr ""
+
+msgid ""
+"The S/MIME certificate for {address} is not trusted. Add its root "
+"certificate to gpgsm's trustlist.txt."
+msgstr ""
+
 #, fuzzy
 msgid "Could not save template: {e}"
 msgstr "A piszkozat nem menthető: {e}"
@@ -8652,6 +8703,46 @@ msgstr "Szűrő hozzáadása…"
 msgid "Run every rule over the mail already in your inboxes"
 msgstr "Futtasson minden szabályt a beérkező levelekben már meglévő leveleken"
 
+msgid "Keys are managed under OpenPGP in the sidebar."
+msgstr ""
+
+msgid "Automatic uses the key whose address matches."
+msgstr "Az automatikus beállítás a megfelelő címhez tartozó kulcsot használja."
+
+msgid "Sign messages by default"
+msgstr "Üzenetek aláírása alapértelmezetten"
+
+#, fuzzy
+msgid "Hide the subject of encrypted mail"
+msgstr "A tárgy elrejtése"
+
+msgid "Only the recipients see the subject. Others see \"...\"."
+msgstr ""
+
+#, fuzzy
+msgid "Send your key with your mail"
+msgstr "Beillesztés formázással"
+
+msgid "Autocrypt. Keys others send this way are kept too."
+msgstr ""
+
+#, fuzzy
+msgid "Encrypt by default"
+msgstr "Beszélgetések kibontása alapértelmezés szerint"
+
+msgid "Mail to people who ask for the same is encrypted."
+msgstr ""
+
+msgid "S/MIME"
+msgstr ""
+
+msgid "Certificates are managed with gpgsm."
+msgstr ""
+
+#, fuzzy
+msgid "The Send menu turns it off for one message."
+msgstr "A feladó kulcsa importálva az üzenetből."
+
 msgid "GNOME Online Account"
 msgstr "GNOME Internetes Fiók"
 
@@ -8955,51 +9046,6 @@ msgstr ""
 
 msgid "No hidden folders."
 msgstr "Nincsenek rejtett mappák."
-
-msgid "Keys are managed under OpenPGP in the sidebar."
-msgstr ""
-
-msgid "Automatic uses the key whose address matches."
-msgstr "Az automatikus beállítás a megfelelő címhez tartozó kulcsot használja."
-
-msgid "Sign messages by default"
-msgstr "Üzenetek aláírása alapértelmezetten"
-
-#, fuzzy
-msgid "Hide the subject of encrypted mail"
-msgstr "A tárgy elrejtése"
-
-msgid "Only the recipients see the subject. Others see \"...\"."
-msgstr ""
-
-#, fuzzy
-msgid "Send your key with your mail"
-msgstr "Beillesztés formázással"
-
-msgid "Autocrypt. Keys others send this way are kept too."
-msgstr ""
-
-#, fuzzy
-msgid "Encrypt by default"
-msgstr "Beszélgetések kibontása alapértelmezés szerint"
-
-msgid "Mail to people who ask for the same is encrypted."
-msgstr ""
-
-msgid "S/MIME"
-msgstr ""
-
-msgid "Certificates are managed with gpgsm."
-msgstr ""
-
-#, fuzzy
-msgid "Sign every message"
-msgstr "Keresés az üzenetben"
-
-msgid ""
-"With the certificate for the sender's address. Mail sent with OpenPGP is not "
-"signed twice."
-msgstr ""
 
 #, fuzzy
 msgid "Your password is kept in the system keyring, never in plain text."
@@ -9779,9 +9825,6 @@ msgstr "Hyprlab"
 #, fuzzy
 #~ msgid "The ⋯ row under each message."
 #~ msgstr "Mellékletek az egyes üzenetekhez"
-
-#~ msgid "Open the actions palette on hover"
-#~ msgstr "Műveletpaletta megnyitása, amikor a kurzor fölé van helyezve"
 
 #~ msgid "Actions palette timeout"
 #~ msgstr "A műveletpaletta időtúllépése"

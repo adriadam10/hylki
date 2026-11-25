@@ -1,6 +1,6 @@
 [package]
 name = "hylki"
-version = "1.49.1"
+version = "1.49.2"
 edition = "2021"
 description = "A clean, fast GNOME-native email client"
 license = "AGPL-3.0-or-later"
@@ -137,4 +137,7 @@ opt-level = 1
 [profile.release]
 lto = "thin"
 codegen-units = 1
-strip = true
+# The symbol table stays, so a crash report's backtrace names functions
+# (#449): 8 MB on the binary, under 1 MB compressed. Line tables would add
+# 170 MB.
+strip = "debuginfo"

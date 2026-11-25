@@ -64,6 +64,10 @@ _TRANSLATIONS = {
         "label": "Invia con Hylki",
         "tip": "Allega i file selezionati a un nuovo messaggio in Hylki",
     },
+    "nl": {
+        "label": "Versturen met Hylki",
+        "tip": "De geselecteerde bestanden bijvoegen bij een nieuw bericht in Hylki",
+    },
     "pl": {
         "label": "Wyślij za pomocą aplikacji Hylki",
         "tip": "Załącz zaznaczone pliki do nowej wiadomości w aplikacji Hylki",
@@ -75,6 +79,10 @@ _TRANSLATIONS = {
     "ru": {
         "label": "Отправить через Hylki",
         "tip": "Прикрепить выбранные файлы к новому сообщению в Hylki",
+    },
+    "tr": {
+        "label": "Hylki ile Gönder",
+        "tip": "Seçili dosyaları Hylki'de yeni bir iletiye ekle",
     },
 }
 
